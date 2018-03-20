@@ -1,1 +1,7 @@
 
+AND B.EFFDT =
+                   (SELECT MAX (B_ED.EFFDT)
+                      FROM PS_HR_SRCH_JOB_VW B_ED
+                     WHERE     B.EMPLID = B_ED.EMPLID
+                           AND B.EMPL_RCD = B_ED.EMPL_RCD
+                           AND B_ED.EFFDT <= SYSDATE) 
